@@ -1,3 +1,11 @@
+"""
+Модуль: Модель пользователя
+Этот модуль содержит модель пользователя для приложения.
+
+Классы:
+    User: Пользовательская модель с дополнительными полями и разрешениями.
+"""
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -11,6 +19,24 @@ NULLABLE = {
 
 
 class User(AbstractUser):
+    """
+    Пользовательская модель с дополнительными полями и разрешениями.
+
+    Атрибуты:
+        email (EmailField): Уникальный адрес электронной почты пользователя.
+        phone (CharField): Номер телефона пользователя. Допускает пустое значение.
+        avatar (ImageField): Изображение аватара пользователя. Допускает пустое значение.
+        verification_code (CharField): Проверочный код пользователя. Допускает пустое значение.
+        is_superuser (BooleanField): Указывает, является ли пользователь суперпользователем.
+        is_staff (BooleanField): Указывает, является ли пользователь сотрудником.
+        is_active (BooleanField): Указывает, активен ли аккаунт пользователя.
+
+    Meta:
+        verbose_name (str): Единственное имя для модели.
+        verbose_name_plural (str): Множественное имя для модели.
+        ordering (tuple): Порядок сортировки по умолчанию для запросов.
+        permissions (list): Список разрешений для модели.
+    """
     username = None
     email = models.EmailField(
         unique=True,

@@ -1,3 +1,7 @@
+"""
+Модуль содержит описание классов для работы с клиентами, письмами, рассылками и отчетами.
+"""
+
 from django.db import models
 from django.utils import timezone
 
@@ -12,6 +16,15 @@ NULLABLE = {
 
 
 class Client(models.Model):
+    """
+    Модель для хранения информации о клиентах.
+
+    Поля:
+        - owner: владелец клиента (ForeignKey на модель User)
+        - email: почтовый адрес клиента
+        - initials: инициалы клиента
+        - comment: комментарий к клиенту
+    """
     owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -37,6 +50,15 @@ class Client(models.Model):
 
 
 class Mail(models.Model):
+    """
+    Модель для хранения информации о письмах.
+
+    Поля:
+        - owner: владелец письма (ForeignKey на модель User)
+        - subject: тема письма
+        - content: содержание письма
+        - mailings: рассылка, к которой относится письмо (ForeignKey на модель MailingSrv)
+    """
     owner = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -64,6 +86,21 @@ class Mail(models.Model):
 
 
 class MailingSrv(models.Model):
+    """
+    Модель для хранения информации о рассылках.
+
+    Поля:
+        - owner: владелец рассылки (ForeignKey на модель User)
+        - recipients: получатели рассылки (ManyToManyField на модель Client)
+        - mail: письмо, которое будет отправлено в рамках рассылки (ForeignKey на модель Mail)
+        - start: время начала рассылки
+        - next: время следующей рассылки
+        - finish: время завершения рассылки
+        - status: статус рассылки
+        - frequency: периодичность рассылки
+        - is_activated: метка активности
+    """
+
     AT_ONCE = 'единоразово'
     BY_DAY = 'раз в день'
     BY_WEEK = 'раз в неделю'
@@ -134,6 +171,16 @@ class MailingSrv(models.Model):
 
 
 class Log(models.Model):
+    """
+    Модель для хранения отчетов о рассылках.
+
+    Поля:
+        - attempt_time: время последней попытки
+        - status: статус попытки
+        - server_response: ответ почтового сервера
+        - mailing: рассылка, к которой относится отчет
+    """
+
     attempt_time = models.DateTimeField(
         auto_now=True,
         verbose_name='время последней попытки')

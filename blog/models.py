@@ -9,6 +9,22 @@ NULLABLE = {
 
 
 class Blogpost(models.Model):
+    """
+    Модель для хранения информации о публикациях в блоге.
+
+    Поля:
+        - title: заголовок публикации (CharField)
+        - content: содержимое публикации (TextField)
+        - preview: изображение-превью публикации (ImageField)
+        - views_count: количество просмотров (IntegerField)
+        - date_create: дата создания публикации (DateTimeField)
+        - is_published: флаг опубликованности (BooleanField)
+
+    Мета:
+        - verbose_name: название модели в единственном числе
+        - verbose_name_plural: название модели во множественном числе
+        - ordering: сортировка по умолчанию (по дате создания в обратном порядке)
+    """
     title = models.CharField(
         max_length=150,
         verbose_name='заголовок')
