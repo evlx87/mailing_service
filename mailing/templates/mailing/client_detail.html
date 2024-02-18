@@ -15,12 +15,12 @@
                     <li>Комментарий: {{ object.comment }}</li>
                 </ul>
                 <div class="btn-group">
-                    <a href="{% url 'app_mailing:client_delete' object.pk %}" type="button"
-                       class="btn btn-sm btn-outline-primary">Удалить</a>
-                    <a href="{% url 'app_mailing:client_update' object.pk %}" type="button"
-                       class="btn btn-sm btn-outline-primary">Редактировать</a>
-                    <a href="{% url 'app_mailing:client_list' %}" type="button"
-                       class="btn btn-sm btn-outline-primary">К списку</a>
+                    <a href="{% url 'mailing:client_delete' object.pk %}" type="button"
+                        class="btn btn-sm btn-outline-primary">Удалить</a>
+                    <a href="{% url 'mailing:client_update' object.pk %}" type="button"
+                        class="btn btn-sm btn-outline-primary">Редактировать</a>
+                    <a href="{% url 'mailing:client_list' %}" type="button" class="btn btn-sm btn-outline-primary">К
+                        списку</a>
                 </div>
             </div>
         </div>

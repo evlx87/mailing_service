@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container">
-    <a href="{% url 'app_mailing:mail_create' %}" class="btn btn-primary">Добавить письмо для рассылки</a>
+    <a href="{% url 'mailing:mail_create' %}" class="btn btn-primary">Добавить письмо для рассылки</a>
 </div>
 
 <div class="container">
@@ -23,12 +23,12 @@
                 </details>
 
                 <div class="btn-group">
-                    <a href="{% url 'app_mailing:mail_detail' object.pk %}" type="button"
-                       class="btn btn-sm btn-outline-primary">Посмотреть</a>
-                    <a href="{% url 'app_mailing:mail_update' object.pk %}" type="button"
-                       class="btn btn-sm btn-outline-primary">Редактировать</a>
-                    <a href="{% url 'app_mailing:mail_delete' object.pk %}" type="button"
-                       class="btn btn-sm btn-outline-primary">Удалить</a>
+                    <a href="{% url 'mailing:mail_detail' object.pk %}" type="button"
+                        class="btn btn-sm btn-outline-primary">Посмотреть</a>
+                    <a href="{% url 'mailing:mail_update' object.pk %}" type="button"
+                        class="btn btn-sm btn-outline-primary">Редактировать</a>
+                    <a href="{% url 'mailing:mail_delete' object.pk %}" type="button"
+                        class="btn btn-sm btn-outline-primary">Удалить</a>
                 </div>
             </div>
         </div>

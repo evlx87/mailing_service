@@ -68,7 +68,6 @@ class BlogpostUpdateView(
         UpdateView):
     model = Blogpost
     form_class = BlogpostForm
-    # success_url = reverse_lazy('app_blog:post_view')
     permission_required = 'blog.change_blogpost'
 
     extra_context = {
