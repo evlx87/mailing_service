@@ -30,12 +30,21 @@ class UserRegisterForm(StyleFormMiXin, UserCreationForm):
 class UserUpdateForm(StyleFormMiXin, UserChangeForm):
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name', 'phone', 'avatar', 'password')
+        fields = (
+            'email',
+            'first_name',
+            'last_name',
+            'phone',
+            'avatar',
+            'password')
         widgets = {
             'password': forms.HiddenInput(),
         }
 
-    password = forms.CharField(label='reset', max_length=256, widget=forms.HiddenInput())
+    password = forms.CharField(
+        label='reset',
+        max_length=256,
+        widget=forms.HiddenInput())
 
 
 class UserUpdateCustomForm(StyleFormMiXin, UserChangeForm):
@@ -50,9 +59,15 @@ class UserUpdateCustomForm(StyleFormMiXin, UserChangeForm):
 
 
 class UserPasswordForm(StyleFormMiXin, forms.Form):
-    old_password = forms.CharField(widget=forms.PasswordInput, label='Старый пароль')
-    new_password1 = forms.CharField(widget=forms.PasswordInput, label='Новый пароль')
-    new_password2 = forms.CharField(widget=forms.PasswordInput, label='Подтверждение нового пароля')
+    old_password = forms.CharField(
+        widget=forms.PasswordInput,
+        label='Старый пароль')
+    new_password1 = forms.CharField(
+        widget=forms.PasswordInput,
+        label='Новый пароль')
+    new_password2 = forms.CharField(
+        widget=forms.PasswordInput,
+        label='Подтверждение нового пароля')
 
     def __init__(self, user, *args, **kwargs):
         self.user = user

@@ -54,7 +54,8 @@ class RegisterView(BaseContextMixin, CreateView):
         url = f'http://{current_site}/users/email_verify/{new_user.verification_code}/'
 
         send_mail(
-            recipient_list=[new_user.email],
+            recipient_list=[
+                new_user.email],
             subject='Подтвердите ваш почтовый адрес',
             message=f'Для завершения регистрации на сайте перейдите по ссылке: {url}',
             from_email=settings.EMAIL_HOST_USER,
@@ -63,7 +64,8 @@ class RegisterView(BaseContextMixin, CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('users:verification_check') + f'?email={self.object.email}'
+        return reverse('users:verification_check') + \
+            f'?email={self.object.email}'
 
 
 class RegisterInfo(TemplateView):
@@ -101,7 +103,10 @@ class UserUpdateView(BaseContextMixin, UpdateView):
         return reverse('users:user_detail', args=[self.kwargs.get('pk')])
 
 
-class UserCustomUpdateView(PermissionRequiredMixin, BaseContextMixin, UpdateView):
+class UserCustomUpdateView(
+        PermissionRequiredMixin,
+        BaseContextMixin,
+        UpdateView):
     model = User
     form_class = UserUpdateCustomForm
     permission_required = 'users.set_is_activated'
@@ -140,7 +145,9 @@ class UserPasswordChangeView(BaseContextMixin, PasswordChangeView):
         return self.request.user
 
     def get_success_url(self):
-        return reverse_lazy('users:user_update', kwargs={'pk': self.request.user.pk})
+        return reverse_lazy(
+            'users:user_update', kwargs={
+                'pk': self.request.user.pk})
 
 
 class PasswordResetView(BasePasswordResetView):
