@@ -32,7 +32,7 @@ class Blogpost(models.Model):
         verbose_name='содержимое',
         **NULLABLE)
     preview = models.ImageField(
-        upload_to='app_blog/',
+        upload_to='blog/',
         verbose_name='изображение', **NULLABLE)
     views_count = models.IntegerField(
         default=0,

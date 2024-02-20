@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=150, verbose_name='заголовок')),
                 ('content', models.TextField(blank=True, null=True, verbose_name='содержимое')),
-                ('preview', models.ImageField(blank=True, null=True, upload_to='app_blog/', verbose_name='изображение')),
+                ('preview', models.ImageField(blank=True, null=True, upload_to='blog/', verbose_name='изображение')),
                 ('views_count', models.IntegerField(default=0, verbose_name='просмотры')),
                 ('date_create', models.DateTimeField(auto_now_add=True, verbose_name='дата публикации')),
                 ('is_published', models.BooleanField(default=True, verbose_name='опубликовано')),

@@ -11,8 +11,9 @@
                             <form method="post">
                                 {% csrf_token %}
                                 <p>Вы действительно хотите удалить запись "{{ object.title }}" ?</p>
-                                   <button type="submit" class="btn btn-danger">Подтвердить</button>
-                                <a href="{% url 'blog:post_view' object.pk %}" class="btn btn-sm btn-outline-primary">Назад</a>
+                                <button type="submit" class="btn btn-danger">Подтвердить</button>
+                                <a href="{% url 'blog:post_view' object.pk %}"
+                                    class="btn btn-sm btn-outline-primary">Назад</a>
                             </form>
                         </div>
                     </div>

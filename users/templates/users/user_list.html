@@ -1,6 +1,6 @@
 {% extends 'mailing/base.html' %}
 
-{% load users_tags %}
+{% load tags %}
 
 {% block content %}
 <div class="container">
@@ -17,7 +17,8 @@
                 </div>
                 <div class="card-body">
                     <h4 class="card-title">Пользователь номер: {{ object.id }}</h4>
-                    <img src="{% media_tag object.avatar %}" class="img-fluid rounded-start" alt="Image" style="width: 100%;">
+                    <img src="{% media_tag object.avatar %}" class="img-fluid rounded-start" alt="Image"
+                        style="width: 100%;">
                     <ul class="list-unstyled mt-3 mb-4">
                         <li>Имя пользователя: {{ object.first_name|default:"не указано" }}</li>
                         <li>Фамилия пользователя: {{ object.last_name|default:"не указана" }}</li>
@@ -25,7 +26,8 @@
                         <li>Телефон пользователя: {{ object.phone|default:"не указан" }}</li>
                     </ul>
                     <div class="btn-group">
-                        <a href="{% url 'users:user_detail' object.pk %}" class="btn btn-sm btn-outline-primary">Подробности</a>
+                        <a href="{% url 'users:user_detail' object.pk %}"
+                            class="btn btn-sm btn-outline-primary">Подробности</a>
                     </div>
                 </div>
             </div>

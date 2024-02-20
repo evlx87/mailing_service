@@ -11,8 +11,8 @@
                             <form method="post">
                                 {% csrf_token %}
                                 <p>Вы действительно хотите удалить отчет "{{ object.pk }}" ?</p>
-                                   <button type="submit" class="btn btn-danger">Подтвердить</button>
-                                <a href="{% url 'app_mailing:log_detail' object.pk %}" class="btn btn-primary">Отмена</a>
+                                <button type="submit" class="btn btn-danger">Подтвердить</button>
+                                <a href="{% url 'mailing:log_detail' object.pk %}" class="btn btn-primary">Отмена</a>
                             </form>
                         </div>
                     </div>

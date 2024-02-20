@@ -31,7 +31,10 @@ class BlogpostListView(BaseContextMixin, ListView):
         return context_data
 
 
-class BlogpostCreateView(PermissionRequiredMixin, BaseContextMixin, CreateView):
+class BlogpostCreateView(
+        PermissionRequiredMixin,
+        BaseContextMixin,
+        CreateView):
     model = Blogpost
     form_class = BlogpostForm
     success_url = reverse_lazy('blog:post_list')
@@ -59,10 +62,12 @@ class BlogpostDetailView(BaseContextMixin, DetailView):
         return self.object
 
 
-class BlogpostUpdateView(PermissionRequiredMixin, BaseContextMixin, UpdateView):
+class BlogpostUpdateView(
+        PermissionRequiredMixin,
+        BaseContextMixin,
+        UpdateView):
     model = Blogpost
     form_class = BlogpostForm
-    # success_url = reverse_lazy('app_blog:post_view')
     permission_required = 'blog.change_blogpost'
 
     extra_context = {
@@ -76,7 +81,10 @@ class BlogpostUpdateView(PermissionRequiredMixin, BaseContextMixin, UpdateView):
         return redirect('mailing:access_denied')
 
 
-class BlogpostDeleteView(PermissionRequiredMixin, BaseContextMixin, DeleteView):
+class BlogpostDeleteView(
+        PermissionRequiredMixin,
+        BaseContextMixin,
+        DeleteView):
     model = Blogpost
     success_url = reverse_lazy('blog:post_list')
     permission_required = 'blog.delete_blogpost'

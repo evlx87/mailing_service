@@ -15,9 +15,11 @@ urlpatterns = [
     path('verification_check/', RegisterInfo.as_view(), name='verification_check'),
     path('email_verify/<str:verification_code>/', get_verification, name='verification'),
     path('verification_approve/', TemplateView.as_view(
-        template_name='users/verification_approve.html'), name='verification_approve'),
+        template_name='users/verification_approve.html'),
+        name='verification_approve'),
     path('verification_reject/', TemplateView.as_view(
-        template_name='users/verification_reject.html'), name='verification_reject'),
+        template_name='users/verification_reject.html'),
+        name='verification_reject'),
     path('user_list/', UserListView.as_view(), name='user_list'),
     path('user_update/<int:pk>/', UserUpdateView.as_view(), name='user_update'),
     path('user_custom_update/<int:pk>/', UserCustomUpdateView.as_view(), name='user_custom_update'),
