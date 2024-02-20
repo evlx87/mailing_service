@@ -43,7 +43,8 @@ INSTALLED_APPS = [
 
     'blog',
     'mailing',
-    'users'
+    'users',
+    'django_apscheduler'
 ]
 
 MIDDLEWARE = [
@@ -85,11 +86,11 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('db_name'),
-        'USER': os.getenv('db_user'),
-        'PASSWORD': os.getenv('db_password'),
-        'HOST': os.getenv('db_host'),
-        'PORT': os.getenv('db_port'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 
@@ -147,24 +148,24 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_URL = '/users/'
 
-ROOT_EMAIL = os.getenv('root_email')
-ROOT_PASSWORD = os.getenv('root_password')
+ROOT_EMAIL = os.getenv('ROOT_EMAIL')
+ROOT_PASSWORD = os.getenv('ROOT_PASSWORD')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = os.getenv('email_host')
-EMAIL_PORT = os.getenv('email_port')
-EMAIL_HOST_USER = os.getenv('email_user')
-EMAIL_HOST_PASSWORD = os.getenv('email_password')
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD')
 EMAIL_USE_SSL = True
 
 
-CACHE_ENABLED = os.getenv('cache_enabled') == 'True'
+CACHE_ENABLED = os.getenv('CACHE_ENABLED') == 'True'
 if CACHE_ENABLED:
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.redis.RedisCache",
-            "LOCATION": os.getenv('cache_location'),
+            "LOCATION": os.getenv('CACHE_LOCATION'),
             "TIMEOUT": 300
         }
     }
